@@ -6,17 +6,18 @@
   MainController.$inject = ['$scope', 'TodoService'];
 
   function MainController($scope, TodoService){
-    $scope.message = 'Hey';
-    console.log(TodoService);
-    var todos;
-    TodoService.readAll()
-                .then(function(){
-                  todos = TodoService.todos;
-                  console.log(todos);
-                });
-      TodoService.create();
-      TodoService.delete();
-      TodoService.update();
-      
+    $scope.todos = TodoService.todos;
+    getTodos();
+
+    
+
+    //writing functions at bottom and linking to scope at top
+    function getTodos(){
+      TodoService.readAll()
+                  .then(function(){
+                    $scope.todos = TodoService.todos;
+                    console.log($scope.todos);
+                  })
+      }
     }
 })();
