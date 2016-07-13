@@ -6,7 +6,7 @@
   MainController.$inject = ['$scope', 'TodoService'];
 
   function MainController($scope, TodoService){
-    $scope.message = 'Hey'
+    $scope.message = 'Hey';
     console.log(TodoService);
     var todos;
     TodoService.readAll()
@@ -14,5 +14,9 @@
                   todos = TodoService.todos;
                   console.log(todos);
                 });
+      TodoService.create();
+      TodoService.delete();
+      TodoService.update();
+      
     }
 })();
